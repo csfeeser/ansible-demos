@@ -1,0 +1,19 @@
+---
+- name: Learning to target windows machines
+  hosts: winbox
+  connection: winrm # required to connect to windows machines
+  gather_facts: no # does this work on windows?
+
+  vars_prompt:
+          - name: ansible_pass
+            prompt: What is the password to log into this windows machine?
+            private: yes
+
+  vars:
+          nasa_apod: https://www.nasa.gov/sites/default/files/thumbnails/image/apod.jpg
+
+  tasks:
+          - name: Get some cool background graphics
+            win_get_url:
+                    url: "{{ nasa_apod }}"
+                    dest: C:\Users\csfeeser\Desktop\nasa_apod.jpg
