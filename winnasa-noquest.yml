@@ -1,6 +1,6 @@
 ---
 - name: Learning to target windows machines
-  hosts: winbox
+  hosts: all
   gather_facts: no # does this work on windows?
 
   vars:
