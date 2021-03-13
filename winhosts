@@ -1,10 +1,10 @@
 [winbox]
 ; ip address should be changed to reflect a windows platform
-hobbes  ansible_host=10.0.2.15
+hobbes  ansible_host=192.168.49.112
 
 [winbox:vars]
 ; this is the Windows user to log in as
-ansible_user=csfeeser
+ansible_user=csfee
 ; this is the connection driver that is required for use
 ansible_connection=winrm
 ; prevents errors
