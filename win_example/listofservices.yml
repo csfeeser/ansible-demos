@@ -1,0 +1,45 @@
+---
+- name: Learning to Use Ansible for Windows automation
+  hosts: all
+  #connection: winrm   # we already mapped this in our inventory
+  gather_facts: yes
+
+  tasks:
+          # testing connectivity
+          - name: Start with win_ping
+            win_ping:
+
+          # get the windows services that are currently running
+          # save the returned JSON as results
+          - name: Grab a list of windows services
+            ansible.windows.win_service_info:
+            register: results
+            tags:
+                    - wip
+
+          # loop across the returned list of dictionaries (each dict is a service)
+          # display the key "display_name" each time through the loop (this is a service)
+          - name: What results did we get??
+            debug:
+                    var: item.get("display_name")    # item["display_name"]
+            loop: "{{ results.get('services') }}"
+            loop_control:
+                    label: "{{ item.display_name }}"
+            tags:
+                    - wip
+
+          - name: Copy all running services into a file on the controller
+            lineinfile:
+                    line: "{{ item.get('display_name') }}\n"
+                    path: "services_running.txt"
+                    create: yes
+            delegate_to: localhost
+            run_once: yes
+            loop: "{{ results.get('services') }}"
+            tags:
+                    - wip
+
+          - name: display what gather_facts return
+            debug:
+                    var: ansible_facts
+                    verbosity: 1

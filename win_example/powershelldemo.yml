@@ -1,0 +1,23 @@
+---
+- name: Learning to Use Ansible for Windows automation
+  hosts: all        # name of the group we want to run against
+  #connection: winrm   # we already mapped this in our inventory
+  gather_facts: yes
+
+  tasks:
+          # Create a text file with a single line inside
+          - name: Issuing a single line powershell command
+            win_shell: Set-Content -Path C:\test.txt -Value 'Hello there. '
+
+          # create a text file with multiple lines inside
+          - name: Run a multi-lined shell command
+            win_shell: |
+                    $text = Get-Content C:\test.txt
+                    $text += ' General Kenobi... you ARE a bold one...'
+                    Set-Content -Path C:\test2.txt -Value $text
+                    
+          # move the file from the controller to the remote Windows host
+          - name: Copy a single file
+            win_copy:
+                    src: moveme.ps1         # this file must be present on the controller
+                    dest: C:\moveme.ps1
