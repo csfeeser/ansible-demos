@@ -23,8 +23,6 @@
             debug:
                     var: item.get("display_name")    # item["display_name"]
             loop: "{{ results.get('services') }}"
-            loop_control:
-                    label: "{{ item.display_name }}"
             tags:
                     - wip
 
