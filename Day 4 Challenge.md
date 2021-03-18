@@ -2,7 +2,7 @@
 
 Do a fresh build of our planetexpress machines:
 
-`wget https://labs.alta3.com/projects/ansible/deploy/max-teardown.sh && bash teardown.sh`
+`wget https://labs.alta3.com/projects/ansible/deploy/max-teardown.sh && bash max-teardown.sh`
 
 `wget https://labs.alta3.com/projects/ansible/deploy/pexpress-setup.sh && bash pexpress-setup.sh`
 
