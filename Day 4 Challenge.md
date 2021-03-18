@@ -24,32 +24,31 @@ Let's put some of the skills we've learned this week to use. Create a playbook t
 <details>
 <summary>**SOLUTION**</summary>
 <br>
-```yaml
-- name: copy keys into remote hosts
-  hosts: planetexpress
 
-  vars_prompt:
-    - name: ansible_ssh_pass
-      private: yes
+    - name: copy keys into remote hosts
+      hosts: planetexpress
 
-  tasks:
-  - name: Set authorized key taken from file
-    become: yes
-    authorized_key:
-      user: "{{ ansible_user }}" # name of the user we SSH into the system as
-      state: present
-      key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}" # public key on the controller
-    when: ansible_distribution == "Ubuntu"
+      vars_prompt:
+        - name: ansible_ssh_pass
+          private: yes
 
-  - name: create astronomy directory
-    file:
-      path: "/home/{{ ansible_user }}/astronomy/"
-      state: directory
+      tasks:
+      - name: Set authorized key taken from file
+        become: yes
+        authorized_key:
+          user: "{{ ansible_user }}" # name of the user we SSH into the system as
+          state: present
+          key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}" # public key on the controller
+        when: ansible_distribution == "Ubuntu"
 
-  - name: get APOD
-    get_url:
-      url: https://www.nasa.gov/sites/default/files/thumbnails/image/apod.jpg
-      dest: "/home/{{ ansible_user }}/astronomy/"
-```
+      - name: create astronomy directory
+        file:
+          path: "/home/{{ ansible_user }}/astronomy/"
+          state: directory
+
+      - name: get APOD
+        get_url:
+          url: https://www.nasa.gov/sites/default/files/thumbnails/image/apod.jpg
+          dest: "/home/{{ ansible_user }}/astronomy/"
     
 </details>
