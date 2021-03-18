@@ -20,4 +20,4 @@ Let's put some of the skills we've learned this week to use. Create a playbook t
 
 - Save NASA's Astrological Picture of the Day (APOD) from the following link to each planetexpress host in a directory called `astronomy`.
 
-    `https://www.nasa.gov/sites/default/files/thumbnails/image/apod.jpg`
+    `https://www.nasa.gov/sites/default/files/thumbnails/image/apod.jpg` 
