@@ -22,7 +22,7 @@ Let's put some of the skills we've learned this week to use. Create a playbook t
     `https://www.nasa.gov/sites/default/files/thumbnails/image/apod.jpg` 
 
 <details>
-<summary>**SOLUTION**</summary>
+<summary>SOLUTION</summary>
 <br>
 
     - name: copy keys into remote hosts
