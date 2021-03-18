@@ -20,3 +20,36 @@ Let's put some of the skills we've learned this week to use. Create a playbook t
 - Save NASA's Astrological Picture of the Day (APOD) from the following link to each planetexpress host in a directory called `astronomy`.
 
     `https://www.nasa.gov/sites/default/files/thumbnails/image/apod.jpg` 
+
+<details>
+<summary>**SOLUTION**</summary>
+<br>
+```yaml
+- name: copy keys into remote hosts
+  hosts: planetexpress
+
+  vars_prompt:
+    - name: ansible_ssh_pass
+      private: yes
+
+  tasks:
+  - name: Set authorized key taken from file
+    become: yes
+    authorized_key:
+      user: "{{ ansible_user }}" # name of the user we SSH into the system as
+      state: present
+      key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}" # public key on the controller
+    when: ansible_distribution == "Ubuntu"
+
+  - name: create astronomy directory
+    file:
+      path: "/home/{{ ansible_user }}/astronomy/"
+      state: directory
+
+  - name: get APOD
+    get_url:
+      url: https://www.nasa.gov/sites/default/files/thumbnails/image/apod.jpg
+      dest: "/home/{{ ansible_user }}/astronomy/"
+```
+    
+</details>
