@@ -2,7 +2,17 @@
 
 I hope yesterday was educational and engaging for you all! To test what you've learned, please do the following:
 
-1. Edit your hosts file and add the following to it:
+1. Run this command and see what containers you are currently running.
+
+    `student@bchd:~$` `sudo docker ps`
+
+0. If you do **NOT** see bender, fry, zoidberg, and farnsworth, run the following commands:
+
+    `student@bchd:~$` `cd && wget https://labs.alta3.com/projects/ansible/deploy/max-teardown.sh && bash max-teardown.sh`
+    
+    `student@bchd:~$` `cd && wget https://labs.alta3.com/projects/ansible/deploy/pexpress-setup.sh && bash pexpress-setup.sh`
+    
+0. Edit your hosts file and add the following to it:
 
     ```
     [renamed]
@@ -12,7 +22,7 @@ I hope yesterday was educational and engaging for you all! To test what you've l
     taz  ansible_host=10.10.2.6 ansible_user=farnsworth ansible_ssh_pass=alta3
     ```
 
-2. Write a playbook that includes the following:
+0. Write a playbook that does the following:
     - explicitly states there will be an **ssh** connection to the hosts
     - writes to all hosts in `renamed` EXCEPT for *taz*.
     - DO NOT gather facts about your hosts
