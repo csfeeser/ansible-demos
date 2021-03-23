@@ -12,6 +12,8 @@ I hope yesterday was educational and engaging for you all! To test what you've l
     
     `student@bchd:~$` `cd && wget https://labs.alta3.com/projects/ansible/deploy/pexpress-setup.sh && bash pexpress-setup.sh`
     
+    `student@bchd:~$` `ssh-copy-id bender@10.10.2.3 -f && ssh-copy-id fry@10.10.2.4 -f && ssh-copy-id zoidberg@10.10.2.5 -f`
+    
 0. Edit your hosts file and add the following to it:
 
     ```
