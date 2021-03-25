@@ -15,7 +15,6 @@ Do a fresh build of our planetexpress machines. Here's a bash script to automate
     ssh-copy-id bender@10.10.2.3 -f
     ssh-copy-id fry@10.10.2.4 -f
     ssh-copy-id zoidberg@10.10.2.5 -f
-    ```
     
 `student@bchd:~$` `bash setup.sh`
 
