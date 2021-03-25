@@ -4,11 +4,10 @@
 
 Do a fresh build of our planetexpress machines. Here's a bash script to automate the process.
 
-    `student@bchd:~$` `cd`
+`student@bchd:~$` `cd`
     
-    `student@bchd:~$` `vim setup.sh`
+`student@bchd:~$` `vim setup.sh`
     
-    ```
     wget https://labs.alta3.com/projects/ansible/deploy/max-teardown.sh
     bash max-teardown.sh
     wget https://labs.alta3.com/projects/ansible/deploy/pexpress-setup.sh
@@ -18,7 +17,7 @@ Do a fresh build of our planetexpress machines. Here's a bash script to automate
     ssh-copy-id zoidberg@10.10.2.5 -f
     ```
     
-    `student@bchd:~$` `bash setup.sh`
+`student@bchd:~$` `bash setup.sh`
 
 When prompted, type `alta3` as the password for bender, fry, and zoidberg.
 
