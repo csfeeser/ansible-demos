@@ -6,8 +6,12 @@
 
 0. Has a precheck that confirms the following:
    - `https://api.nasa.gov/planetary/apod?api_key=tFXI8wD5RLHE84WEvtZg8MdkychOZn0bV4T6sgM4` is a valid URL.
-   - That the string "video" is NOT inside this API response! If it does, trigger an error that returns the message- "APOD url is a video, not an image."
+   - That the string "youtube" is NOT inside this API response! If it does, trigger an error that returns the message- "APOD url is a video, not an image."
 
 0. Display what the value of `url` is in this API response.
 
 0. Save the image returned by `url` as a file in each host's home directory.
+
+### Testing:
+
+- To test your precheck, use the following URL (which does have a YouTube video as the APOD): https://api.nasa.gov/planetary/apod?api_key=tFXI8wD5RLHE84WEvtZg8MdkychOZn0bV4T6sgM4&date=2020-09-29
