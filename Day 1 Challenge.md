@@ -30,3 +30,41 @@ I hope yesterday was educational and engaging for you all! To test what you've l
     - DO NOT gather facts about your hosts
     - Create a variable that has a value of *your name* (**BONUS**- set this variable somewhere else than under `vars:`)
     - Create a new user with *your name* in each machine. Assign it to the group *funkytown*
+
+
+<details>
+<summary>**SOLUTION:**</summary>
+<br>
+    
+```yaml
+- name: "day 1 challenge solution"
+  hosts: renamed,!taz
+  gather_facts: no
+  connection: ssh
+  become: true
+
+  vars_prompt:
+    - name: "username"
+      prompt: "What is the name of the new user?"
+      private: no
+
+    - name: "password"
+      prompt: "What is the password of the user?"
+      private: yes
+      confirm: yes
+      encrypt: "sha512_crypt"
+
+  tasks:
+    - name: Ensure group "somegroup" exists
+      group:
+        name: funkytown
+        state: present
+
+    - name: "Add the user {{ username }}"
+      user:
+        name: "{{ username }}"
+        password: "{{ password }}"
+        group: funkytown
+```
+
+</details>
