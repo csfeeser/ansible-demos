@@ -35,7 +35,9 @@ I hope yesterday was educational and engaging for you all! To test what you've l
 <details>
 <summary>SOLUTION:</summary>
 <br>
-    
+
+Here's a link to an awesome [Stack Overflow Solution!](https://stackoverflow.com/questions/63717959/create-user-group-if-it-does-not-exist-using-ansible)
+
 ```yaml
 - name: "day 1 challenge solution"
   hosts: renamed,!taz
