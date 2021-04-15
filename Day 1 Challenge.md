@@ -1,4 +1,4 @@
-# Day 1 Content Challenge!
+# Day 1 Ansible Content Challenge!
 
 I hope yesterday was educational and engaging for you all! To test what you've learned, please do the following:
 
