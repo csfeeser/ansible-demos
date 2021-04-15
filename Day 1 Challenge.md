@@ -14,7 +14,7 @@ I hope yesterday was educational and engaging for you all! To test what you've l
     
     `student@bchd:~$` `ssh-copy-id bender@10.10.2.3 -f && ssh-copy-id fry@10.10.2.4 -f && ssh-copy-id zoidberg@10.10.2.5 -f`
     
-0. Edit your hosts file and add the following to it:
+0. Edit your inventory file (`/home/student/inv/dev/hosts`) and add the following to it:
 
     ```
     [renamed]
@@ -29,4 +29,4 @@ I hope yesterday was educational and engaging for you all! To test what you've l
     - writes to all hosts in `renamed` EXCEPT for *taz*.
     - DO NOT gather facts about your hosts
     - Create a variable that has a value of *your name* 
-    - Create a new user with *your name* in each machine. Assign it the group *funkytown*
+    - Create a new user with *your name* in each machine. Assign it to the group *funkytown*
