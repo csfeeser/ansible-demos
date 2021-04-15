@@ -33,7 +33,7 @@ I hope yesterday was educational and engaging for you all! To test what you've l
 
 
 <details>
-<summary>**SOLUTION:**</summary>
+<summary>SOLUTION:</summary>
 <br>
     
 ```yaml
