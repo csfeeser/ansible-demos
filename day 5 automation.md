@@ -30,22 +30,5 @@ Let's put some of the skills we've learned this week to use. Create a playbook t
 
 - Automate the copying of SSH keys into Linux hosts rather than using ssh-copy-id user@host.
     > Suggestion: look up the **authorized_key** module!
-    > Follow up suggestion... this will require a SECOND play!
-
-<details>
-<summary>SOLUTION</summary>
-<br>
-
-    - name: copy keys into remote hosts
-      hosts: planet_express
-
-      tasks:
-      - name: Set authorized key taken from file
-        become: yes
-        authorized_key:
-          user: "{{ ansible_user }}" # name of the user we SSH into the system as
-          state: present
-          key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}" # public key on the controller
-        when: ansible_distribution == "Ubuntu"
     
-</details>
+    > Follow up suggestion... this will require a SECOND play!
