@@ -32,3 +32,48 @@ Let's put some of the skills we've learned this week to use. Create a playbook t
     > Suggestion: look up the **authorized_key** module!
     
     > Follow up suggestion... this will require a SECOND play!
+
+
+<details>
+<summary>SOLUTION</summary>
+<br>
+
+```yaml
+---
+- name: "Download/Execute Bash Scripts"
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  become: yes
+
+  tasks:
+
+  - name: Download our bash scripts
+    get_url:
+      url: "{{ item }}"
+      dest: "/home/student/"
+    loop: ["https://static.alta3.com/projects/ansible/max_teardown.sh", "https://static.alta3.com/projects/ansible/modules/setup.sh"]
+
+  - name: Run bash scripts
+    script:
+      cmd: "{{ item }}"
+    loop: ["/home/student/max_teardown.sh", "/home/student/setup.sh"]
+
+- name: "Copy Public Keys"
+  hosts: planet_express,!farnsworth
+  connection: ssh
+  gather_facts: no
+  become: yes
+
+  vars:
+    ansible_ssh_pass: alta3
+
+  tasks:
+    - name: Set authorized key taken from file
+      authorized_key:
+        user: "{{ ansible_user }}"
+        state: present
+        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}" # public key on the controller
+```
+
+</details>
