@@ -8,11 +8,21 @@ I hope yesterday was educational and engaging for you all! To test what you've l
 
 0. If you do **NOT** see bender, fry, zoidberg, and farnsworth, run the following commands:
 
-    `student@bchd:~$` `cd && wget https://labs.alta3.com/projects/ansible/deploy/max-teardown.sh && bash max-teardown.sh`
-    
-    `student@bchd:~$` `cd && wget https://labs.alta3.com/projects/ansible/deploy/pexpress-setup.sh && bash pexpress-setup.sh`
-    
-    `student@bchd:~$` `ssh-copy-id bender@10.10.2.3 -f && ssh-copy-id fry@10.10.2.4 -f && ssh-copy-id zoidberg@10.10.2.5 -f`
+    `student@bchd:~$` `cd`
+
+    `student@bchd:~$` `vim setup.sh`
+
+       wget https://labs.alta3.com/projects/ansible/deploy/max-teardown.sh
+       bash max-teardown.sh
+       wget https://labs.alta3.com/projects/ansible/deploy/pexpress-setup.sh
+       bash pexpress-setup.sh
+       ssh-copy-id bender@10.10.2.3 -f
+       ssh-copy-id fry@10.10.2.4 -f
+       ssh-copy-id zoidberg@10.10.2.5 -f
+
+    `student@bchd:~$` `bash setup.sh`
+
+When prompted, type `alta3` as the password for bender, fry, and zoidberg.
     
 0. Edit your inventory file (`/home/student/inv/dev/hosts`) and add the following to it:
 
