@@ -31,7 +31,7 @@ I hope yesterday was educational and engaging for you all! To test what you've l
     - Create a variable that has a value of *your name* (**BONUS**- set this variable somewhere else than under `vars:`)
     - Create a new user with *your name* in each machine. Assign it to the group *funkytown*
 
-
+<!--
 <details>
 <summary>SOLUTION:</summary>
 <br>
@@ -70,3 +70,4 @@ Here's a link to an awesome [Stack Overflow Solution!](https://stackoverflow.com
 ```
 
 </details>
+-->
