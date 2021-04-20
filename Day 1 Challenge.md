@@ -41,7 +41,6 @@ I hope yesterday was educational and engaging for you all! To test what you've l
     - Create a new user with *your name* in each machine. Assign it to the group *funkytown*
     - **BONUS**- the name of the user is passed with a {{ variable }} outside of the tasks section.
 
-<!--
 <details>
 <summary>SOLUTION:</summary>
 <br>
@@ -80,4 +79,3 @@ Here's a link to an awesome [Stack Overflow Solution!](https://stackoverflow.com
 ```
 
 </details>
--->
