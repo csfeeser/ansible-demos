@@ -24,7 +24,7 @@ I hope yesterday was educational and engaging for you all! To test what you've l
 
     When prompted, type `alta3` as the password for bender, fry, and zoidberg.
     
-0. Edit your inventory file (`/home/student/inv/dev/hosts`) and add the following to it:
+0. Edit your inventory file (`/home/student/ans/inv/dev/hosts`) and add the following to it:
 
     ```
     [renamed]
