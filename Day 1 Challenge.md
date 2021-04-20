@@ -38,8 +38,8 @@ I hope yesterday was educational and engaging for you all! To test what you've l
     - explicitly states there will be an **ssh** connection to the hosts
     - writes to all hosts in `renamed` EXCEPT for *taz*.
     - DO NOT gather facts about your hosts
-    - Create a variable that has a value of *your name* (**BONUS**- set this variable somewhere else than under `vars:`)
     - Create a new user with *your name* in each machine. Assign it to the group *funkytown*
+    - **BONUS**- the name of the user is passed with a {{ variable }} outside of the tasks section.
 
 <!--
 <details>
