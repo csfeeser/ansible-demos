@@ -22,7 +22,7 @@ I hope yesterday was educational and engaging for you all! To test what you've l
 
     `student@bchd:~$` `bash setup.sh`
 
-When prompted, type `alta3` as the password for bender, fry, and zoidberg.
+    When prompted, type `alta3` as the password for bender, fry, and zoidberg.
     
 0. Edit your inventory file (`/home/student/inv/dev/hosts`) and add the following to it:
 
