@@ -1,0 +1,72 @@
+---
+- name: "Teardown/Rebuild Containers"
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  become: yes
+
+  vars:
+    images:
+     - host: bender
+       ip: 10.10.2.3
+     - host: fry
+       ip: 10.10.2.4
+     - host: zoidberg
+       ip: 10.10.2.5
+     - host: farnsworth
+       ip: 10.10.2.6
+
+  tasks:
+
+  - name: install docker module
+    pip:
+      name: docker
+
+  - name: create docker network
+    community.docker.docker_network:
+      name: ansible-net
+      driver_options: com.docker.network.driver.mtu=1450
+      ipam_config:
+       - subnet: 10.10.2.0/24
+
+  - name: load pexpress images
+    community.docker.docker_image:
+      name: "ssh-{{item.host }}"
+      load_path: "/home/student/.config/dockerfiles/ansible/ssh-{{ item.host }}.tar"
+      source: load
+    loop: "{{ images }}"
+
+  - name: Remove PlanetExpress Containers
+    community.docker.docker_container:
+      name: "{{ item.host }}"
+      state: absent
+    loop: "{{ images }}"
+
+  - name: Create PlanetExpress Containers
+    community.docker.docker_container:
+      name: "{{ item.host }}"
+      hostname: "{{ item.host }}"
+      detach: yes
+      image: "ssh-{{ item.host }}"
+      networks:
+       - ipv4_address: "{{ item.ip }}"
+         name: ansible-net
+    loop: "{{ images }}"
+
+- name: "Copy Public Keys"
+  hosts: planetexpress,!farnsworth
+  connection: ssh
+  gather_facts: no
+  become: yes
+
+  vars:
+    ansible_ssh_pass: alta3
+
+  tasks:
+    - name: Set authorized key taken from file
+      authorized_key:
+        user: "{{ ansible_user }}"
+        state: present
+        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}" 
+      tags:
+       - keys
