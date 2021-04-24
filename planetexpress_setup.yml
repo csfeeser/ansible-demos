@@ -18,29 +18,30 @@
 
   tasks:
 
-  - name: install docker module
+  - name: Install docker module
     pip:
       name: docker
 
-  - name: create docker network
+  - name: Create docker network
     community.docker.docker_network:
       name: ansible-net
       driver_options: com.docker.network.driver.mtu=1450
       ipam_config:
        - subnet: 10.10.2.0/24
 
-  - name: load pexpress images
+  - name: Load PlanetExpress images
     community.docker.docker_image:
       name: "ssh-{{item.host }}"
       load_path: "/home/student/.config/dockerfiles/ansible/ssh-{{ item.host }}.tar"
       source: load
     loop: "{{ images }}"
 
-  - name: Remove PlanetExpress Containers
+  - name: Remove old containers
     community.docker.docker_container:
-      name: "{{ item.host }}"
+      name: "{{ item }}"
       state: absent
-    loop: "{{ images }}"
+      container_default_behavior: compatibility
+    loop: ["john","paul","george","stuart","pete","ringo","indy","bender","fry","zoidberg","farnsworth"]
 
   - name: Create PlanetExpress Containers
     community.docker.docker_container:
@@ -48,6 +49,8 @@
       hostname: "{{ item.host }}"
       detach: yes
       image: "ssh-{{ item.host }}"
+      container_default_behavior: compatibility
+      network_mode: ansible-net
       networks:
        - ipv4_address: "{{ item.ip }}"
          name: ansible-net
